@@ -1,0 +1,43 @@
+# Inside DVC- Inside DVC directory . DVC init after commiting the branch to github
+DVC init creates .dvc directory and makes changes to the .gitignore file to ensure that 
+data is not tracked by dvc
+
+I add data.txt inside raw/data
+
+I do dvc add data/ &
+git add data.dvc .gitignore 
+
+This will create a data.dvc file 
+outs:
+- md5: f365c5c4fe007ddbabe91e6e1661acdf.dir
+  size: 27
+  nfiles: 5 # Number of files external, interim,processed,raw/ raw/data.txt
+  hash: md5
+  path: data
+
+  # Understand - Code and .dvc files(registry) are pushed to git but the actual
+  data is pushed to cloud , hence the command git add data.dvc .gitignore 
+
+  # Now I will make some changes in data file. Now to keep track of data
+  we need dvc to push data to some cloud/temporary storgae so that our local 
+  storage does not get too crowded. So we do 
+  mkdir tmp
+  # dvc remote add -d remote tmp (Here creating tmp as a suod for remote)
+
+  #dvc status
+  # dvc push(Pushing the changes to cloud)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# RAM is not equal to cache. Cache is a folder(created for quick access) on
+hard disk and not keeping things on RAM
